@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Contacto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="estudios.html">Estudios</a></li>
+            <li><a href="experiencia.html">Experiencia</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Contacto</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Envíame un Mensaje</h2>
+            <p>¿Te interesa mi perfil? ¡No dudes en contactarme! Completa el formulario a continuación y me pondré en contacto contigo lo antes posible.</p>
+
+            <form action="#" method="post" class="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required minlength="2" placeholder="Ingresa tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="asunto">Asunto:</label>
+                    <input type="text" id="asunto" name="asunto" required minlength="5" placeholder="¿Cuál es el motivo de tu mensaje?">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required minlength="10" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h2>Información de Contacto</h2>
+            <ul class="contact-list">
+                <li><strong>Email:</strong> ejemplo@email.com</li>
+                <li><strong>Teléfono:</strong> +54 11 1234-5678</li>
+                <li><strong>LinkedIn:</strong> <a href="#" target="_blank">Mi perfil</a></li>
+                <li><strong>GitHub:</strong> <a href="#" target="_blank">Mi repositorio</a></li>
+                <li><strong>Ubicación:</strong> Buenos Aires, Argentina</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p><em>© 2026 Mi CV Multipágina. Todos los derechos reservados.</em></p>
+    </footer>
+</body>
+</html>
