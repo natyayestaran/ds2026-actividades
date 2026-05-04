@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - Buscador de Libros</title>
+    <style>
+        .tarjeta { border: 1px solid #ccc; padding: 10px; margin: 5px; border-radius: 8px; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Buscador de Libros (Open Library)</h1>
+    
+    <input type="text" id="input-busqueda" placeholder="Escribe un título...">
+    <button id="btn-buscar">Buscar</button>
+
+    <div id="error-validacion" class="error"></div>
+
+    <div id="resultados"></div>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>
