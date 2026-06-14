@@ -1,0 +1,55 @@
+body {
+    background-color: #ffeef5;
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        #f8c8dc,
+        #f9dbe9
+    );
+
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    height: 350px;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background-color: #f48fb1;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #ec7096;
+}
+
+footer {
+    background-color: #f8c8dc !important;
+    color: white;
+    font-weight: bold;
+}
