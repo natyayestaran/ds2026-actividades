@@ -1,0 +1,53 @@
+@baseUrl = http://localhost:3000/api
+
+### --- PRUEBAS DE LIBROS ---
+
+### 1. Listar todos los libros (Status 200) [1]
+GET {{baseUrl}}/libros
+
+### 2. Ver un libro que existe (Status 200) [1]
+GET {{baseUrl}}/libros/1
+
+### 3. Ver un libro que NO existe (Status 404) [1]
+GET {{baseUrl}}/libros/999
+
+### 4. Borrar un libro (Status 204) [1]
+DELETE {{baseUrl}}/libros/1
+
+### 5. Borrar el mismo libro otra vez para verificar el error (Status 404) 
+DELETE {{baseUrl}}/libros/1
+
+
+### --- PRUEBAS DE AUTORES ---
+
+### 6. Listar todos los autores (Status 200)
+GET {{baseUrl}}/autores
+
+### 7. Crear un autor nuevo (Status 201) [1, 2]
+POST {{baseUrl}}/autores
+Content-Type: application/json
+
+{
+  "nombre": "Julio Cortázar",
+  "nacionalidad": "Argentino"
+}
+
+### 8. Ver detalle de un autor (Status 200)
+GET {{baseUrl}}/autores/1
+
+### 9. Actualizar un autor existente (Status 200) [1]
+PUT {{baseUrl}}/autores/1
+Content-Type: application/json
+
+{
+  "nombre": "Jorge Luis Borges",
+  "nacionalidad": "Argentino"
+}
+
+### 10. Intentar actualizar un autor que no existe (Status 404) 
+PUT {{baseUrl}}/autores/888
+Content-Type: application/json
+
+{
+  "nombre": "Autor Fantasma"
+}
