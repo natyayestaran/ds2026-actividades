@@ -1,0 +1,31 @@
+datasource db {
+  provider = "postgresql"
+}
+
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+model Autor {
+  id     Int     @id @default(autoincrement())
+  nombre String  @unique
+  libros Libro[]
+}
+
+model Libro {
+  id          Int         @id @default(autoincrement())
+  titulo      String
+  precio      Float
+  disponible  Boolean     @default(true)
+  autorId     Int
+  autor       Autor       @relation(fields: [autorId], references: [id])
+  categorias  Categoria[] @relation("LibroToCategoria")
+}
+
+model Categoria {
+  id     Int     @id @default(autoincrement())
+  nombre String  @unique
+  libros Libro[] @relation("LibroToCategoria")
+}

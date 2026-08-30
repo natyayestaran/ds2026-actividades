@@ -1,0 +1,58 @@
+### Obtener todos los libros
+GET http://localhost:3000/api/libros
+
+### Obtener libros filtrados por disponibilidad
+GET http://localhost:3000/api/libros?disponible=true
+
+### Obtener libro por ID (Éxito)
+GET http://localhost:3000/api/libros/1
+
+### Obtener libro por ID (Error 404)
+GET http://localhost:3000/api/libros/999
+
+### Crear un nuevo libro
+POST http://localhost:3000/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "Rayuela",
+  "autor": "Julio Cortázar",
+  "precio": 6500,
+  "imagen": "https://url_de_ejemplo.com/rayuela.jpg",
+  "disponible": true
+}
+
+### Eliminar un libro (Éxito - devuelve 244 sin contenido)
+DELETE http://localhost:3000/api/libros/1
+
+### Eliminar un libro (Error 404)
+DELETE http://localhost:3000/api/libros/999
+
+
+#########################################
+### CRUD de Autores
+#########################################
+
+### Obtener todos los autores
+GET http://localhost:3000/api/autores
+
+### Obtener autor por ID (Éxito)
+GET http://localhost:3000/api/autores/1
+
+### Obtener autor por ID (Error 404)
+GET http://localhost:3000/api/autores/999
+
+### Crear un nuevo autor
+POST http://localhost:3000/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "Julio Cortázar",
+  "nacionalidad": "Argentina"
+}
+
+### Eliminar un autor (Éxito)
+DELETE http://localhost:3000/api/autores/1
+
+### Eliminar un autor (Error 404)
+DELETE http://localhost:3000/api/autores/999
