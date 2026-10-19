@@ -1,0 +1,119 @@
+@baseUrl = http://localhost:3001/api
+
+### Caso 1: Registro Exitoso (201 sin passwordHash)
+POST {{baseUrl}}/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Ana Maria",
+  "email": "ana@libreria.test",
+  "password": "Libreria2026"
+}
+
+### Caso 2: Registro Email Repetido (409 Conflict)
+POST {{baseUrl}}/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Ana Maria Duplicada",
+  "email": "ana@libreria.test",
+  "password": "Libreria2026"
+}
+
+### Caso 3: Registro Contraseña Débil (400 Bad Request)
+POST {{baseUrl}}/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Ana Maria",
+  "email": "ana2@libreria.test",
+  "password": "corta"
+}
+
+### Caso 4: Login Email inexistente (401 con mensaje genérico)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "fantasma@libreria.test",
+  "password": "CualquierClave123"
+}
+
+### Caso 5: Login Contraseña Incorrecta (401 con mensaje genérico)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "ana@libreria.test",
+  "password": "ClaveIncorrecta123"
+}
+
+### Caso 6: Login ADMIN Exitoso (200 con token)
+# @name loginAdmin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@libreria.test",
+  "password": "Admin1234"
+}
+
+### Guardamos el token de Admin
+@tokenAdmin = {{loginAdmin.response.body.token}}
+
+
+### Caso 6.2: Login CLIENTE Exitoso (200 con token)
+# @name loginCliente
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "cliente@libreria.test",
+  "password": "Cliente1234"
+}
+
+### Guardamos el token de Cliente
+@tokenCliente = {{loginCliente.response.body.token}}
+
+
+### Caso 7: GET /auth/yo sin token (401 Unauthorized)
+GET {{baseUrl}}/auth/yo
+
+### Caso 8: GET /auth/yo con token de CLIENTE (200 OK)
+GET {{baseUrl}}/auth/yo
+Authorization: Bearer {{tokenCliente}}
+
+### Caso 9: POST /api/libros sin token (401 Unauthorized)
+POST {{baseUrl}}/libros
+Content-Type: application/json
+
+{
+  "titulo": "El Túnel",
+  "precio": 3500.00,
+  "autorId": 1
+}
+
+### Caso 10: POST /api/libros con token de CLIENTE (403 Forbidden)
+POST {{baseUrl}}/libros
+Authorization: Bearer {{tokenCliente}}
+Content-Type: application/json
+
+{
+  "titulo": "El Túnel",
+  "precio": 3500.00,
+  "autorId": 1
+}
+
+### Caso 11: POST /api/libros con token de ADMIN Exitoso (201 Created)
+POST {{baseUrl}}/libros
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "titulo": "El Túnel",
+  "precio": 3500.00,
+  "autorId": 1
+}
+
+### Caso 12: GET /api/libros sin token (público - 200 OK)
+GET {{baseUrl}}/libros
