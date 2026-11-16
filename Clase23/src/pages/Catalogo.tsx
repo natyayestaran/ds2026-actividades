@@ -45,11 +45,12 @@ export default function Catalogo() {
       <Row>
         {libros.map((libro) => (
           <Col md={4} key={libro.id} className="mb-4">
+            
             <BookCard
-              titulo={libro.titulo}
-              autor={libro.autor}
-              imagen={libro.imagen}
-            />
+  id={libro.id}
+  titulo={libro.titulo}
+  autor={libro.autor}
+/>      
           </Col>
         ))}
       </Row>
