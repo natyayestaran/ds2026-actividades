@@ -9,6 +9,10 @@ export default function Catalogo() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const portadas: Record<number, string> = {
+    1: 'https://covers.openlibrary.org/b/title/The%20Aleph%20Jorge%20Luis%20Borges-L.jpg'
+  }
+
   useEffect(() => {
     apiFetch<Libro[]>('/libros')
       .then((data) => {
@@ -34,7 +38,9 @@ export default function Catalogo() {
   if (error) {
     return (
       <Container className="mt-5">
-        <Alert variant="danger">Error al cargar el catálogo: {error}</Alert>
+        <Alert variant="danger">
+          Error al cargar el catálogo: {error}
+        </Alert>
       </Container>
     )
   }
@@ -42,15 +48,16 @@ export default function Catalogo() {
   return (
     <Container className="mt-5">
       <h2 className="text-center mb-4">Catálogo de Libros</h2>
+
       <Row>
         {libros.map((libro) => (
           <Col md={4} key={libro.id} className="mb-4">
-            
             <BookCard
-  id={libro.id}
-  titulo={libro.titulo}
-  autor={libro.autor}
-/>      
+              id={libro.id}
+              titulo={libro.titulo}
+              autor={libro.autor}
+              imagen={portadas[libro.id]}
+            />
           </Col>
         ))}
       </Row>
